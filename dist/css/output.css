@@ -521,20 +521,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100vh;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .h-\[calc\(100vh-39px-0\.5rem\)\] {
   height: calc(100vh - 39px - 0.5rem);
+}
+
+.h-8 {
+  height: 2rem;
 }
 
 .min-h-\[2rem\] {
   min-height: 2rem;
 }
 
-.w-0 {
-  width: 0px;
+.w-\[280px\] {
+  width: 280px;
 }
 
 .w-full {
@@ -545,20 +545,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 2rem;
 }
 
-.w-\[280px\] {
-  width: 280px;
-}
-
-.min-w-0 {
-  min-width: 0px;
+.min-w-\[280px\] {
+  min-width: 280px;
 }
 
 .min-w-\[2rem\] {
   min-width: 2rem;
 }
 
-.min-w-\[280px\] {
-  min-width: 280px;
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-fit {
@@ -567,66 +563,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: fit-content;
 }
 
-.max-w-full {
-  max-width: 100%;
-}
-
-.-translate-x-96 {
-  --tw-translate-x: -24rem;
-  transform: var(--tw-transform);
-}
-
-.translate-x-0 {
-  --tw-translate-x: 0px;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-5 {
-  --tw-translate-x: -1.25rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-52 {
-  --tw-translate-x: -13rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-8 {
-  --tw-translate-x: -2rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-80 {
-  --tw-translate-x: -20rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-6 {
-  --tw-translate-x: -1.5rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-60 {
-  --tw-translate-x: -15rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-7 {
-  --tw-translate-x: -1.75rem;
-  transform: var(--tw-transform);
-}
-
-.-translate-x-64 {
-  --tw-translate-x: -16rem;
-  transform: var(--tw-transform);
-}
-
 .-translate-x-72 {
   --tw-translate-x: -18rem;
   transform: var(--tw-transform);
 }
 
-.transform {
+.translate-x-0 {
+  --tw-translate-x: 0px;
   transform: var(--tw-transform);
 }
 
@@ -666,22 +609,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
-.space-y-5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden {
@@ -765,14 +702,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 1.5rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .pt-4 {
@@ -787,14 +724,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: 'poppins';
 }
 
+.font-\[\'Amiri\'\] {
+  font-family: 'Amiri';
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .text-2xl {
@@ -802,12 +738,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2rem;
 }
 
-.font-black {
-  font-weight: 900;
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
-.font-medium {
-  font-weight: 500;
+.font-black {
+  font-weight: 900;
 }
 
 .font-bold {
@@ -818,20 +755,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 600;
 }
 
+.font-medium {
+  font-weight: 500;
+}
+
 .uppercase {
   text-transform: uppercase;
-}
-
-.leading-5 {
-  line-height: 1.25rem;
-}
-
-.leading-10 {
-  line-height: 2.5rem;
-}
-
-.leading-\[2\.8rem\] {
-  line-height: 2.8rem;
 }
 
 .leading-\[2\.2rem\] {
@@ -847,14 +776,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .shadow-xl {
@@ -908,10 +837,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     line-height: 2.25rem;
   }
 
-  .sm\:leading-\[2\.8rem\] {
-    line-height: 2.8rem;
-  }
-
   .sm\:leading-\[3\.2rem\] {
     line-height: 3.2rem;
   }
@@ -934,36 +859,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: none;
   }
 
-  .md\:w-\[280px\] {
-    width: 280px;
-  }
-
-  .md\:min-w-\[280px\] {
-    min-width: 280px;
-  }
-
-  .md\:-translate-x-96 {
-    --tw-translate-x: -24rem;
-    transform: var(--tw-transform);
-  }
-
   .md\:translate-x-0 {
     --tw-translate-x: 0px;
     transform: var(--tw-transform);
   }
 
-  .md\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
   .md\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .md\:leading-\[2\.8rem\] {
-    line-height: 2.8rem;
   }
 
   .md\:leading-\[3\.8rem\] {

@@ -55,7 +55,7 @@ if (params.get("surat") == null) {
                 ayah += `<div class="space-y-2">
                                 <span class="uppercase tracking-widest font-semibold text-sm text-gray-500">Ayat ${r.nomor}</span>
                                 <div class="space-y-5">
-                                    <h2 class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[3.8rem] sm:leading-[3.2rem] leading-[2.2rem]">${r.ar}</h2>
+                                    <h2 class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[3.8rem] sm:leading-[3.2rem] leading-[2.2rem] font-['Amiri']">${r.ar}</h2>
                                     <p class="font-['poppins'] bg-blue-600 text-white max-w-fit py-2 px-6 rounded-md shadow-xl text-sm">${r.idn}</p>
                                 </div>
                             </div>`;
@@ -71,17 +71,20 @@ if (params.get("surat") == null) {
 
                     response.forEach((r) => {
                         surah += `<div class="flex items-center gap-1">
-                                    <span class="text-sm h-8 w-8 min-h-[2rem] min-w-[2rem] font-medium ${
+                                    <span class="text-sm h-8 w-8 min-h-[2rem] min-w-[2rem] font-medium 
+                                    ${
                                         r.nomor != surahData.nomor
                                             ? "border border-blue-600 text-blue-600"
                                             : "bg-blue-600 text-white"
-                                    } rounded-md flex justify-center items-center">${
-                            r.nomor
-                        }</span>
-                                            <a class="block font-medium hover:bg-gray-100 w-full py-1 px-2 rounded-md transition-all duration-300" href="?surat=${
-                                                r.nomor
-                                            }">${r.nama_latin}</a>
-                                        </div>`;
+                                    } 
+                                    rounded-md flex justify-center items-center">${
+                                        r.nomor
+                                    }</span>
+                                    <a class="block font-medium hover:bg-gray-100 w-full py-1 px-2 rounded-md transition-all duration-300" 
+                                        href="?surat=${r.nomor}">
+                                        ${r.nama_latin}
+                                    </a>
+                                </div>`;
                     });
 
                     surahList.innerHTML = surah;
