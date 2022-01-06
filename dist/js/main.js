@@ -49,11 +49,15 @@ if (params.get("surat") == null) {
             let ayah = "";
             const surahData = response;
 
-            surahHeader.querySelector('h1').innerHTML = `${response.nama_latin} (${response.arti})`;
-            surahHeader.querySelector('p').innerHTML = `${response.deskripsi}`;
-            surahHeader.querySelector('audio').src = `${response.audio}`;
+            surahHeader.querySelector('h1').innerHTML = `${surahData.nama_latin} (${surahData.arti})`;
+            surahHeader.querySelector('p').innerHTML = `${surahData.deskripsi}`;
+            surahHeader.querySelector('audio').src = `${surahData.audio}`;
 
-            response.ayat.forEach((r) => {
+            document.querySelectorAll('.web-desc').forEach(webDesc => {
+                webDesc.setAttribute('content', surahData.deskripsi);
+            });
+
+            surahData.ayat.forEach((r) => {
                 ayah += `<div class="space-y-2">
                                 <span class="uppercase tracking-widest font-semibold text-sm text-gray-500">Ayat ${r.nomor}</span>
                                 <div class="space-y-5">
@@ -62,11 +66,6 @@ if (params.get("surat") == null) {
                                 </div>
                             </div>`;
             });
-
-                // ayahTitle.addEventListener('click', e => {
-                //     const audio = new Audio(e.target.dataset.audio);
-                //     audio.paused ? audio.play() : audio.pause();
-                // });
 
             ayahList.innerHTML = ayah;
 
