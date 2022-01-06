@@ -45,27 +45,28 @@ if (params.get("surat") == null) {
         .then((response) => response.json())
         .then((response) => {
             let ayahList = document.querySelector("#ayah-list");
-            let ayahTitle = document.querySelector("#ayah-title");
+            let surahHeader = document.querySelector("#surah-header");
             let ayah = "";
             const surahData = response;
 
-            ayahTitle.innerHTML = `${response.nama_latin} (${response.arti})`;
-            ayahTitle.dataset.audio = response.audio;
+            surahHeader.querySelector('h1').innerHTML = `${response.nama_latin} (${response.arti})`;
+            surahHeader.querySelector('p').innerHTML = `${response.deskripsi}`;
+            surahHeader.querySelector('audio').src = `${response.audio}`;
 
             response.ayat.forEach((r) => {
                 ayah += `<div class="space-y-2">
                                 <span class="uppercase tracking-widest font-semibold text-sm text-gray-500">Ayat ${r.nomor}</span>
                                 <div class="space-y-5">
-                                    <h2 id="arabic-ayah" data-audio="${r.audio}" class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[4.8rem] sm:leading-[4.2rem] leading-[3.2rem] font-['Amiri'] tracking-[1px]">${r.ar}</h2>
+                                    <h2 id="arabic-ayah" data-audio="${r.audio}" class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[4.8rem] sm:leading-[4.2rem] leading-[3.2rem] font-['Amiri'] tracking-[1px] text-gray-800">${r.ar}</h2>
                                     <p class="font-['poppins'] bg-blue-600 text-white max-w-fit py-2 px-6 rounded-md shadow-xl text-sm">${r.idn}</p>
                                 </div>
                             </div>`;
             });
 
-                ayahTitle.addEventListener('click', e => {
-                    const audio = new Audio(e.target.dataset.audio);
-                    audio.paused ? audio.play() : audio.pause();
-                });
+                // ayahTitle.addEventListener('click', e => {
+                //     const audio = new Audio(e.target.dataset.audio);
+                //     audio.paused ? audio.play() : audio.pause();
+                // });
 
             ayahList.innerHTML = ayah;
 
@@ -86,7 +87,7 @@ if (params.get("surat") == null) {
                                     rounded-md flex justify-center items-center">${
                                         r.nomor
                                     }</span>
-                                    <a class="block font-medium hover:bg-gray-100 w-full py-1 px-2 rounded-md transition-all duration-300" 
+                                    <a class="block font-medium hover:bg-gray-100 text-gray-800 w-full py-1 px-2 rounded-md transition-all duration-300" 
                                         href="?surat=${r.nomor}">
                                         ${r.nama_latin}
                                     </a>

@@ -12,7 +12,7 @@
 <body class="overflow-hidden h-full">
   <div class="overflow-hidden h-screen relative">
     <div class="px-8 py-2 flex justify-between items-center border-b fixed top-0 inset-x-0 bg-white z-50">
-      <a href="#" class="text-xl font-black font-['nunito'] md:order-1 order-2"><span class="inline-block text-blue-600">Pow</span>Quran</a>
+      <a href="#" class="text-xl font-black font-['nunito'] md:order-1 order-2 text-gray-800"><span class="inline-block text-blue-600">Pow</span>Quran</a>
       <div class="md:flex gap-2 order-2 items-center hidden">
         <form method="" class="search" action="">
             <input class="border py-1.5 px-3 rounded-md focus:outline-none ring ring-transparent ring-offset-2 focus:ring-blue-600 font-['poppins'] search-input" placeholder="Cari surat.." type="search">
@@ -45,7 +45,15 @@
         </div>
       </div> 
       <div class="px-8 mt-14 py-6 w-full md:ml-[280px] overflow-y-auto h-[calc(100vh-39px-0.5rem)]">
-        <h1 class="font-['poppins'] text-2xl font-bold mb-2" id="ayah-title"></h1>
+        <div class="space-y-2 mb-4" id="surah-header">
+            <h1 class="font-['poppins'] text-2xl font-bold text-gray-800"></h1>
+            <p class="font-['poppins'] text-gray-600">
+            </p>
+            <audio controls src="">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+        </div>
         <div id="ayah-list" class="space-y-8">
         </div>
         <footer class="flex items-center gap-1 border-t mt-10 pt-4 font-['poppins'] text-sm">
