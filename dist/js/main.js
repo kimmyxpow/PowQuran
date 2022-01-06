@@ -50,16 +50,22 @@ if (params.get("surat") == null) {
             const surahData = response;
 
             ayahTitle.innerHTML = `${response.nama_latin} (${response.arti})`;
+            ayahTitle.dataset.audio = response.audio;
 
             response.ayat.forEach((r) => {
                 ayah += `<div class="space-y-2">
                                 <span class="uppercase tracking-widest font-semibold text-sm text-gray-500">Ayat ${r.nomor}</span>
                                 <div class="space-y-5">
-                                    <h2 class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[4.8rem] sm:leading-[4.2rem] leading-[3.2rem] font-['Amiri'] tracking-[1px]">${r.ar}</h2>
+                                    <h2 id="arabic-ayah" data-audio="${r.audio}" class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[4.8rem] sm:leading-[4.2rem] leading-[3.2rem] font-['Amiri'] tracking-[1px]">${r.ar}</h2>
                                     <p class="font-['poppins'] bg-blue-600 text-white max-w-fit py-2 px-6 rounded-md shadow-xl text-sm">${r.idn}</p>
                                 </div>
                             </div>`;
             });
+
+                ayahTitle.addEventListener('click', e => {
+                    const audio = new Audio(e.target.dataset.audio);
+                    audio.paused ? audio.play() : audio.pause();
+                });
 
             ayahList.innerHTML = ayah;
 
