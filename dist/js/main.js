@@ -23,7 +23,7 @@ if (params.get("surat") == null) {
                 .then((response) => response.json())
                 .then((response) => {
                     for (let i = 0; i < response.length; i++) {
-                        if (inputValue == response[i].nama_latin) {
+                        if (inputValue.toLowerCase() == response[i].nama_latin.toLowerCase()) {
                             keyword = response[i].nomor;
                             document.location.href = "?surat=" + keyword;
                             break;
