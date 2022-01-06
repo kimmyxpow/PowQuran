@@ -763,12 +763,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-transform: uppercase;
 }
 
-.leading-\[2\.2rem\] {
-  line-height: 2.2rem;
+.leading-\[3\.2rem\] {
+  line-height: 3.2rem;
 }
 
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+
+.tracking-\[1\] {
+  letter-spacing: 1;
+}
+
+.tracking-\[1px\] {
+  letter-spacing: 1px;
 }
 
 .text-blue-600 {
@@ -840,6 +848,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   .sm\:leading-\[3\.2rem\] {
     line-height: 3.2rem;
   }
+
+  .sm\:leading-\[4\.2rem\] {
+    line-height: 4.2rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -871,5 +883,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:leading-\[3\.8rem\] {
     line-height: 3.8rem;
+  }
+
+  .md\:leading-\[4\.8rem\] {
+    line-height: 4.8rem;
   }
 }
