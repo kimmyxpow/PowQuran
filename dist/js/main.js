@@ -71,32 +71,32 @@ if (params.get("surat") == null) {
             });
 
             ayahList.innerHTML = ayah;
-
-            fetch("https://api.quran.sutanlab.id/surah")
-                .then((response) => response.json())
-                .then((response) => {
-                    let surahList = document.querySelector("#surah-list");
-                    let surah = "";
-
-                    response.data.forEach((r) => {
-                        surah += `<div class="flex items-center gap-1">
-                                    <span class="text-sm h-8 w-8 min-h-[2rem] min-w-[2rem] font-medium 
-                                    ${
-                                        r.number != surahData.number
-                                            ? "border border-blue-600 text-blue-600"
-                                            : "bg-blue-600 text-white"
-                                    } 
-                                    rounded-md flex justify-center items-center">${
-                                        r.number
-                                    }</span>
-                                    <a class="block font-medium hover:bg-gray-100 text-gray-800 w-full py-1 px-2 rounded-md transition-all duration-300" 
-                                        href="?surat=${r.number}">
-                                        ${r.name.transliteration.id}
-                                    </a>
-                                </div>`;
-                    });
-
-                    surahList.innerHTML = surah;
-                });
         });
+
+        fetch("https://api.quran.sutanlab.id/surah")
+            .then((response) => response.json())
+            .then((response) => {
+                let surahList = document.querySelector("#surah-list");
+                let surah = "";
+
+                response.data.forEach((r) => {
+                    surah += `<div class="flex items-center gap-1">
+                                <span class="text-sm h-8 w-8 min-h-[2rem] min-w-[2rem] font-medium 
+                                ${
+                                    r.number != surat
+                                        ? "border border-blue-600 text-blue-600"
+                                        : "bg-blue-600 text-white"
+                                } 
+                                rounded-md flex justify-center items-center">${
+                                    r.number
+                                }</span>
+                                <a class="block font-medium hover:bg-gray-100 text-gray-800 w-full py-1 px-2 rounded-md transition-all duration-300" 
+                                    href="?surat=${r.number}">
+                                    ${r.name.transliteration.id}
+                                </a>
+                            </div>`;
+                });
+
+                surahList.innerHTML = surah;
+            });
 }
