@@ -19,12 +19,12 @@ if (params.get("surat") == null) {
             const inputValue = e.target.querySelector("input").value;
             let keyword;
 
-            fetch("https://equran.id/api/surat")
+            fetch("https://api.quran.sutanlab.id/surah")
                 .then((response) => response.json())
                 .then((response) => {
-                    for (let i = 0; i < response.length; i++) {
-                        if (inputValue.toLowerCase() == response[i].nama_latin.toLowerCase()) {
-                            keyword = response[i].nomor;
+                    for (let i = 0; i < response.data.length; i++) {
+                        if (inputValue.toLowerCase() == response.data[i].name.transliteration.id.toLowerCase()) {
+                            keyword = response.data[i].number;
                             document.location.href = "?surat=" + keyword;
                             break;
                         } else {
@@ -41,54 +41,57 @@ if (params.get("surat") == null) {
 
     const surat = params.get("surat");
 
-    fetch("https://equran.id/api/surat/" + surat)
+    fetch("https://api.quran.sutanlab.id/surah/" + surat)
         .then((response) => response.json())
         .then((response) => {
             let ayahList = document.querySelector("#ayah-list");
             let surahHeader = document.querySelector("#surah-header");
             let ayah = "";
-            const surahData = response;
+            const surahData = response.data;
 
-            surahHeader.querySelector('h1').innerHTML = `${surahData.nama_latin} (${surahData.arti})`;
-            surahHeader.querySelector('p').innerHTML = `${surahData.deskripsi}`;
-            surahHeader.querySelector('audio').src = `${surahData.audio}`;
+            surahHeader.querySelector('h1').innerHTML = `${surahData.name.transliteration.id} (${surahData.name.translation.id})`;
+            surahHeader.querySelector('p').innerHTML = `${surahData.tafsir.id}`;
 
             document.querySelectorAll('.web-desc').forEach(webDesc => {
                 webDesc.setAttribute('content', surahData.deskripsi);
             });
 
-            surahData.ayat.forEach((r) => {
+            surahData.verses.forEach((r) => {
                 ayah += `<div class="space-y-2">
-                                <span class="uppercase tracking-widest font-semibold text-sm text-gray-500">Ayat ${r.nomor}</span>
+                                <span class="uppercase tracking-widest font-semibold text-sm text-gray-500">Ayat ${r.number.inSurah}</span>
                                 <div class="space-y-5">
-                                    <h2 id="arabic-ayah" data-audio="${r.audio}" class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[4.8rem] sm:leading-[4.2rem] leading-[3.2rem] font-['Amiri'] tracking-[1px] text-gray-800">${r.ar}</h2>
-                                    <p class="font-['poppins'] bg-blue-600 text-white max-w-fit py-2 px-6 rounded-md shadow-xl text-sm">${r.idn}</p>
+                                    <audio controls src="${r.audio.primary}">
+                                        Your browser does not support the
+                                        <code>audio</code> element.
+                                    </audio>
+                                    <h2 id="arabic-ayah" class="font-bold md:text-4xl sm:text-3xl text-2xl md:leading-[4.8rem] sm:leading-[4.2rem] leading-[3.2rem] font-['Amiri'] tracking-[1px] text-gray-800">${r.text.arab}</h2>
+                                    <p class="font-['poppins'] bg-blue-600 text-white max-w-fit py-2 px-6 rounded-md shadow-xl text-sm">${r.translation.id}</p>
                                 </div>
                             </div>`;
             });
 
             ayahList.innerHTML = ayah;
 
-            fetch("https://equran.id/api/surat")
+            fetch("https://api.quran.sutanlab.id/surah")
                 .then((response) => response.json())
                 .then((response) => {
                     let surahList = document.querySelector("#surah-list");
                     let surah = "";
 
-                    response.forEach((r) => {
+                    response.data.forEach((r) => {
                         surah += `<div class="flex items-center gap-1">
                                     <span class="text-sm h-8 w-8 min-h-[2rem] min-w-[2rem] font-medium 
                                     ${
-                                        r.nomor != surahData.nomor
+                                        r.number != surahData.number
                                             ? "border border-blue-600 text-blue-600"
                                             : "bg-blue-600 text-white"
                                     } 
                                     rounded-md flex justify-center items-center">${
-                                        r.nomor
+                                        r.number
                                     }</span>
                                     <a class="block font-medium hover:bg-gray-100 text-gray-800 w-full py-1 px-2 rounded-md transition-all duration-300" 
-                                        href="?surat=${r.nomor}">
-                                        ${r.nama_latin}
+                                        href="?surat=${r.number}">
+                                        ${r.name.transliteration.id}
                                     </a>
                                 </div>`;
                     });
