@@ -1,4 +1,21 @@
 let params = new URLSearchParams(location.search);
+const baseUrl = "https://api.quran.gading.dev/surah"
+
+const registerServiceWorker = async () => {
+    if ('serviceWorker' in window.navigator) {
+        // register service worker
+        const registration = await window.navigator.serviceWorker.register("./sw.js")
+
+        if (registration.installing) console.log("installing service worker")
+        else if (registration.waiting) console.log("service worker installed")
+        else if (registration.active) console.log("service worker active")
+    } else {
+        console.log("service worker doesnot support")
+    }
+}
+
+registerServiceWorker()
+
 
 if (params.get("surat") == null) {
     document.location.href = "?surat=1";
@@ -19,7 +36,7 @@ if (params.get("surat") == null) {
             const inputValue = e.target.querySelector("input").value;
             let keyword;
 
-            fetch("https://api.quran.sutanlab.id/surah")
+            fetch(baseUrl)
                 .then((response) => response.json())
                 .then((response) => {
                     for (let i = 0; i < response.data.length; i++) {
@@ -41,7 +58,7 @@ if (params.get("surat") == null) {
 
     const surat = params.get("surat");
 
-    fetch("https://api.quran.sutanlab.id/surah/" + surat)
+    fetch(`${baseUrl}/${surat}`)
         .then((response) => response.json())
         .then((response) => {
             let ayahList = document.querySelector("#ayah-list");
@@ -73,7 +90,7 @@ if (params.get("surat") == null) {
             ayahList.innerHTML = ayah;
         });
 
-        fetch("https://api.quran.sutanlab.id/surah")
+        fetch(baseUrl)
             .then((response) => response.json())
             .then((response) => {
                 let surahList = document.querySelector("#surah-list");
