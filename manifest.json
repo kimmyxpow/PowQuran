@@ -1,0 +1,28 @@
+{
+  "name": "Quran Application",
+  "short_name": "Quran",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/?surat=1",
+  "description": "Quran Reader Application",
+  "icons": [{
+    "src": "src/images/quran512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  },{
+    "src": "src/images/quran128.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  },{
+    "src": "src/images/quran64.png",
+    "sizes": "64x64",
+    "type": "image/png"
+  },{
+    "src": "src/images/quran48.png",
+    "sizes": "48x48",
+    "type": "image/png"
+  }]
+}
